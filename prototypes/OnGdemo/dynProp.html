@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="icon" href="https://gitlab.com/jesson.go/publicresources/-/raw/master/logo/BeyondView_-_Landscape_-_Black__2___1_.png">
+    
+        <style media="screen">
+    
+            .mainbody {
+              padding: 100px;
+            }
+            ol, .nobullet{
+                list-style: none;
+            }
+            .navcolor{
+              color: #EEEEEE;
+            }
+    
+        </style>
+    
+        <nav class="navbar navbar-dark bg-dark navbar-expand-lg">
+          <a class="navbar-brand" href="#">
+            <img src="https://raw.githubusercontent.com/jgbv/bvMisc/main/img/BeyondView%20-%20Landscape%20-%20white%20text%20(1).png?token=GHSAT0AAAAAAB6GCYEH6RSOAKGL3ZG6YLNSY6Z675A" width="50" height="30" alt="bvlogo">
+            <div class="collapse navbar-collapse" id="navbarNav">
+              <ul class="navbar-nav">
+                <li class="nav-item active">
+                  <a class="navcolor" href="www.beyondview.com"><b>BeyondView Schematic Viewer</b></a>
+                </li>
+              </ul>
+            </div>
+          </a>
+        </nav>
+    
+        <script type="text/javascript" defer>
+            function dynQuery(){
+                const params = new Proxy(new URLSearchParams(window.location.search), {
+                    get: (searchParams, prop) => searchParams.get(prop),
+                  });
+                let value = params.propname; // "some_value"
+                console.log(value);
+                document.getElementById("sceneObj").innerHTML = value;
+            }
+            
+        </script>
+
+      </head>
+    
+    
+    
+    
+    <body onload="dynQuery()">
+        <title>BeyondView - Isometric Display</title>
+        
+        <h1 id="sceneObj">Valve - Isometric Display</h1>
+        <br><br><hr>
+        
+        
+        <style>
+        .centerImg {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        </style>
+        
+        
+        <a href="https://gitlab.com/jesson.go/publicresources/-/raw/master/img/industrial/isodrawing-with-valve.png">
+        <img src="https://gitlab.com/jesson.go/publicresources/-/raw/master/img/industrial/isodrawing-with-valve.png"
+            alt="Iso Valve" width="100%" class="centerImg">
+        </a>
+        
+        
+        <a href="https://www.enggcyclopedia.com/wp-content/uploads/2012/05/Relief-valve-sample.png">
+        <img src="https://www.enggcyclopedia.com/wp-content/uploads/2012/05/Relief-valve-sample.png"
+            alt="Iso Valve" width="60%" class="centerImg">
+        </a>
+        
+        
+        
+        <div class="container">
+        
+        <div class="row">
+            <div class="col-sm-2"></div>
+            <div class="col-sm-8">
+        
+            <!-- <a href="https://gitlab.com/jesson.go/onsitephotofloor/-/raw/master/misc/isovalv-drawing.png">
+                <img src="https://gitlab.com/jesson.go/onsitephotofloor/-/raw/master/misc/isovalv-drawing.png"
+                    alt="Iso Valve" class="centerImg">
+            </a>
+        
+            <a href="https://gitlab.com/jesson.go/onsitephotofloor/-/raw/master/misc/isodrawing.png">
+                <img src="https://gitlab.com/jesson.go/onsitephotofloor/-/raw/master/misc/isodrawing.png"
+                alt="Iso Drawing" width="1100" class="centerImg">
+            </a> -->
+        
+            </div>
+        
+            <div class="col-sm-2" align="center"></div>
+        </div>
+        
+        </div>
+    </body>
+</html>
