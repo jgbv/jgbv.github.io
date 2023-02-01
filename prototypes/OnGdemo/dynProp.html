@@ -19,6 +19,10 @@
               color: #EEEEEE;
             }
     
+            .dynelements{
+                padding: 40px;
+            }
+
         </style>
     
         <nav class="navbar navbar-dark bg-dark navbar-expand-lg">
@@ -39,12 +43,12 @@
                 const params = new Proxy(new URLSearchParams(window.location.search), {
                     get: (searchParams, prop) => searchParams.get(prop),
                   });
-                let objid = params.objID;
-                let objN = params.objName;
-                console.log(objid);
-                console.log(objN);
-                document.getElementById("objID").innerHTML = objid;
-                document.getElementById("objName").innerHTML = objN;
+                  let objid = params.objID;
+                  let objN = params.objName;
+                  console.log(objid);
+                  console.log(objN);
+                  document.getElementById("objID").innerHTML = objid;
+                  document.getElementById("objName").innerHTML = objN;
             }
             
         </script>
@@ -57,54 +61,59 @@
     <body onload="dynQuery()">
         <title>BeyondView - Isometric Display</title>
         
-        <h2 id="objID">000000</h2>
-        <h1 id="objName">Isometric Display</h1>
-        <br><br><hr>
-        
-        
-        <style>
-        .centerImg {
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        </style>
-        
-        
-        <a href="https://gitlab.com/jesson.go/publicresources/-/raw/master/img/industrial/isodrawing-with-valve.png">
-        <img src="https://gitlab.com/jesson.go/publicresources/-/raw/master/img/industrial/isodrawing-with-valve.png"
-            alt="Iso Valve" width="100%" class="centerImg">
-        </a>
-        
-        
-        <a href="https://www.enggcyclopedia.com/wp-content/uploads/2012/05/Relief-valve-sample.png">
-        <img src="https://www.enggcyclopedia.com/wp-content/uploads/2012/05/Relief-valve-sample.png"
-            alt="Iso Valve" width="60%" class="centerImg">
-        </a>
-        
-        
-        
-        <div class="container">
-        
-        <div class="row">
-            <div class="col-sm-2"></div>
-            <div class="col-sm-8">
-        
-            <!-- <a href="https://gitlab.com/jesson.go/onsitephotofloor/-/raw/master/misc/isovalv-drawing.png">
-                <img src="https://gitlab.com/jesson.go/onsitephotofloor/-/raw/master/misc/isovalv-drawing.png"
-                    alt="Iso Valve" class="centerImg">
+        <div class="dynelements">
+            <h2 id="objID">000000</h2>
+            <h1 id="objName">Isometric Display</h1>
+            
+            
+            <br><br><hr>
+            
+            
+            <style>
+            .centerImg {
+                display: block;
+                margin-left: auto;
+                margin-right: auto;
+            }
+            </style>
+            
+            
+            <a href="https://gitlab.com/jesson.go/publicresources/-/raw/master/img/industrial/isodrawing-with-valve.png">
+            <img src="https://gitlab.com/jesson.go/publicresources/-/raw/master/img/industrial/isodrawing-with-valve.png"
+                alt="Iso Valve" width="100%" class="centerImg">
             </a>
-        
-            <a href="https://gitlab.com/jesson.go/onsitephotofloor/-/raw/master/misc/isodrawing.png">
-                <img src="https://gitlab.com/jesson.go/onsitephotofloor/-/raw/master/misc/isodrawing.png"
-                alt="Iso Drawing" width="1100" class="centerImg">
-            </a> -->
-        
+            
+            
+            <a href="https://www.enggcyclopedia.com/wp-content/uploads/2012/05/Relief-valve-sample.png">
+            <img src="https://www.enggcyclopedia.com/wp-content/uploads/2012/05/Relief-valve-sample.png"
+                alt="Iso Valve" width="60%" class="centerImg">
+            </a>
+            
+            
+            
+            <div class="container">
+            
+                <div class="row">
+                    <div class="col-sm-2"></div>
+                    <div class="col-sm-8">
+                
+                    <!-- <a href="https://gitlab.com/jesson.go/onsitephotofloor/-/raw/master/misc/isovalv-drawing.png">
+                        <img src="https://gitlab.com/jesson.go/onsitephotofloor/-/raw/master/misc/isovalv-drawing.png"
+                            alt="Iso Valve" class="centerImg">
+                    </a>
+                
+                    <a href="https://gitlab.com/jesson.go/onsitephotofloor/-/raw/master/misc/isodrawing.png">
+                        <img src="https://gitlab.com/jesson.go/onsitephotofloor/-/raw/master/misc/isodrawing.png"
+                        alt="Iso Drawing" width="1100" class="centerImg">
+                    </a> -->
+                
+                    </div>
+                
+                    <div class="col-sm-2" align="center"></div>
+                </div>
+            
             </div>
-        
-            <div class="col-sm-2" align="center"></div>
-        </div>
-        
+
         </div>
     </body>
 </html>
