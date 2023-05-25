@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="icon" href="https://gitlab.com/jesson.go/publicresources/-/raw/master/logo/BeyondView_-_Landscape_-_Black__2___1_.png">
+    
+        <style media="screen">
+    
+            .mainbody {
+              padding: 100px;
+            }
+            ol, .nobullet{
+                list-style: none;
+            }
+            .navcolor{
+              color: #EEEEEE;
+            }
+    
+            .dynelements{
+                padding: 40px;
+            }
+
+        </style>
+    
+        <nav class="navbar navbar-dark bg-dark navbar-expand-lg">
+          <a class="navbar-brand" href="#">
+            <img src="https://raw.githubusercontent.com/jgbv/bvMisc/main/img/BeyondView%20-%20Landscape%20-%20white%20text%20(1).png?token=GHSAT0AAAAAAB6GCYEH6RSOAKGL3ZG6YLNSY6Z675A" width="50" height="30" alt="bvlogo">
+            <div class="collapse navbar-collapse" id="navbarNav">
+              <ul class="navbar-nav">
+                <li class="nav-item active">
+                  <a class="navcolor" href="www.beyondview.com"><b>BeyondView Schematic Viewer</b></a>
+                </li>
+              </ul>
+            </div>
+          </a>
+        </nav>
+    
+        <script type="text/javascript" defer>
+            var loadFile = function(event) {
+                var output = document.getElementById('output');
+                output.src = URL.createObjectURL(event.target.files[0]);
+                output.onload = function() {
+                  URL.revokeObjectURL(output.src) // free memory
+                }
+              };
+        </script>
+
+      </head>
+    
+    
+    
+    
+    <body onload="">
+        <title>BeyondView - Floorplan Parser</title>
+        
+        <div class="dynelements">
+            <!-- <h2 id="pageTitle">Floorplan</h2> -->
+            <h1 id="FPName">AI Floorplan Parser</h1>
+            
+            
+            <br><hr>
+            
+            
+            <style>
+            .centerImg {
+                display: block;
+                margin-left: auto;
+                margin-right: auto;
+            }
+            </style>
+            
+            
+           
+            
+            <div class="container">
+            
+                <div class="row">
+                    <div class="col-sm-2"></div>
+                    <div class="col-sm-8">
+                        <img id="uploadFP"></div>
+                        <form runat="server">
+                            <input type="file" accept="image/*" onchange="loadFile(event)">
+                            <img id="output"/>
+                          </form>
+                    </div>
+                
+                    <div class="col-sm-2" align="center"></div>
+                </div>
+            
+            </div>
+
+        </div>
+    </body>
+</html>
