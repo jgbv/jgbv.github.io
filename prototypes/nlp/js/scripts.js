@@ -17,11 +17,13 @@ function parseQueryItems(){
       
       var polist = document.getElementById("poitems");
       var c;
+      var chairdata = [];
       for (var i=0; i < chairs.length; i++){
         c = chairs[i].split("_");
         
         var rowimg = `<td class="rowimg">${c[0]}</td>`;
         var itemName = `<td class="itemName">${c[1]}</td>`;
+        chairdata.indexOf(itemName) === -1 ? chairdata.push(itemName) : console.log("already added");
         var supplierName = `<td class="supplierName">${c[2]}</td>`;
         var itemQuantity = `<td class="itemQuantity">${c[3]}</td>`;
         var itemCost = `<td class="itemCost">$${c[4]}</td>`;
@@ -29,9 +31,40 @@ function parseQueryItems(){
         polist.insertAdjacentHTML("beforeend", elementList);
       }
       
+      var randoms = Array(chairdata.length).fill(0).map(makeARandomNumber);
+
+      var barColors = [
+        "#b91d47",
+        "#00aba9",
+        "#2b5797",
+        "#e8c3b9",
+        "#1e7145"
+      ];
+
+      new Chart("myChart", {
+        type: "pie",
+        data: {
+          labels: chairdata,
+          datasets: [{
+            backgroundColor: barColors,
+            data: randoms
+          }]
+        },
+        options: {
+          title: {
+            display: true,
+            text: "World Wide Wine Production 2018"
+          }
+        }
+      });
 
 
 }
+
+var makeARandomNumber = function(){
+  return Math.floor(Math.random() * 9);
+}
+
 
 function getDate(){
     const date = new Date();
