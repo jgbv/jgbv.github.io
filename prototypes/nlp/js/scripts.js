@@ -53,7 +53,7 @@ function parseQueryItems(){
         options: {
           title: {
             display: true,
-            text: "Client Data"
+            text: clientN
           }
         }
       });
