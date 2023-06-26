@@ -29,10 +29,14 @@
             #orderitems{
                 border: 1px #CCC solid;
             }
+            .clientFont{
+                color: #3d617d;
+            }
+
         </style>
 
         <script type="text/javascript" src="js/scripts.js"></script>
-
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
     </head>
 
     <body onload="parseQueryItems()">
@@ -41,7 +45,7 @@
                 <div class="col" id="addresses">
                     <br>
                     <div id="client">
-                        <p><b id="clientName">Address</b></p>
+                        <h3 class="clientFont"><b id="clientName">Address</b></h3>
                         <p id="clientSt">123 Fake Street</p>
                         <p id="clientCity">New Springfield, OR 11111</p>
                         <p id="clientPhone">(123) 456-7890</p>
@@ -49,7 +53,7 @@
 
                     <div id="client">
                         <br>
-                        <p id="clientPName"><b>Contact: Jane Doe</b></p>
+                        <p class="clientFont" id="clientPName"><b>Contact: Jane Doe</b></p>
                         <p id="clientPPhone">(111) 222-3333</p>
                         <p id="clientPEmail">janedoe@client.com</p>
                     </div>
@@ -96,27 +100,7 @@
                         </tr>
                     </thead>
                     <tbody id="poitems">
-                        <tr>
-                            <td class="rowimg">img</td>
-                            <td class="itemName">Alu Chair</td>
-                            <td class="supplierName">Herman Miller</td>
-                            <td class="itemQuantity">11</td>
-                            <td class="itemCost">$1100.00</td>
-                        </tr>
-                        <tr>
-                            <td class="rowimg">img</td>
-                            <td class="itemName">Conference Table</td>
-                            <td class="supplierName">Herman Miller</td>
-                            <td class="itemQuantity">2</td>
-                            <td class="itemCost">$2000.00</td>
-                        </tr>
-                        <tr>
-                            <td class="rowimg">img</td>
-                            <td class="itemName">Swedish Chair</td>
-                            <td class="supplierName">Ikea</td>
-                            <td class="itemQuantity">4</td>
-                            <td class="itemCost">$100.00</td>
-                        </tr>
+                        
                     </tbody>
                 </table>                
             </div>
