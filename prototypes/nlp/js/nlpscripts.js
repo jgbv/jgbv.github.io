@@ -59,7 +59,7 @@ function parseQueryItems(){
       document.getElementById("ftotal").innerHTML = ffeCosts+processingfee+shippingfee;
 
     //   var randoms = Array(ffeLabels.length).fill(0).map(makeARandomNumber);
-      var barColors = Array(ffeLabels.length).fill(0).map(Math.floor(Math.random()*16777215).toString(16));
+      var barColors = Array(ffeLabels.length).fill(0).map(getRandHexColor);
 
     //   var barColors = [
     //     "#b91d47",
@@ -93,6 +93,9 @@ var makeARandomNumber = function(){
   return Math.floor(Math.random() * 9);
 }
 
+var getRandHexColor = function(){
+    return Math.floor(Math.random()*16777215).toString(16);
+}
 
 function getDate(){
     const date = new Date();
