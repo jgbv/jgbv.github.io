@@ -53,10 +53,13 @@ function parseQueryItems(){
         polist.insertAdjacentHTML("beforeend", elementList);
       }
       
-      document.getElementById("fsubtotal").innerHTML = ffeCosts;
+      document.getElementById("fsubtotal").innerHTML = `$${ffeCosts.toFixed(2)}`;
       var processingfee = 100.00;
       var shippingfee = 1683.31;
-      document.getElementById("ftotal").innerHTML = ffeCosts+processingfee+shippingfee;
+      document.getElementById("ffees").innerHTML = `$${processingfee}`;
+      document.getElementById("fship").innerHTML = `$${shippingfee}`;
+      var total = ffeCosts+processingfee+shippingfee;
+      document.getElementById("ftotal").innerHTML = `$${total.toFixed(2)}`;
 
     //   var randoms = Array(ffeLabels.length).fill(0).map(makeARandomNumber);
       var barColors = Array(ffeLabels.length).fill(0).map(getRandHexColor);
