@@ -25,7 +25,7 @@ function parseQueryItems(){
       var ffeCounts = [];
       var ffeCosts = 0;
       for (var i=0; i < ffes.length; i++){
-        c = ffes[i].split("_");
+        c = ffes[i].split("~");
         
         var rowimg = `<td class="rowimg">${c[0]}</td>`;
         var itemName = `<td class="itemName">${c[1]}</td>`;
