@@ -54,7 +54,7 @@ function parseQueryItems(){
       }
       
       document.getElementById("fsubtotal").innerHTML = `$${ffeCosts.toFixed(2)}`;
-      var processingfee = 100.00;
+      var processingfee = 100.29;
       var shippingfee = 1683.31;
       document.getElementById("ffees").innerHTML = `$${processingfee}`;
       document.getElementById("fship").innerHTML = `$${shippingfee}`;
@@ -62,15 +62,15 @@ function parseQueryItems(){
       document.getElementById("ftotal").innerHTML = `$${total.toFixed(2)}`;
 
     //   var randoms = Array(ffeLabels.length).fill(0).map(makeARandomNumber);
-      var barColors = Array(ffeLabels.length).fill(0).map(getRandHexColor);
+    //   var barColors = Array(ffeLabels.length).fill(0).map(getRandHexColor);
 
-    //   var barColors = [
-    //     "#b91d47",
-    //     "#00aba9",
-    //     "#2b5797",
-    //     "#e8c3b9",
-    //     "#1e7145"
-    //   ];
+      var barColors = [
+        "#b91d47",
+        "#00aba9",
+        "#2b5797",
+        "#e8c3b9",
+        "#1e7145"
+      ];
 
       new Chart("pieChart", {
         type: "pie",
