@@ -8,8 +8,12 @@ function parseQueryItems(){
       let numppl = params.numppl;
       let propName = params.propertyName;
       let clientN = params.clientName;
+      let sqft = params.sqft;
+
+      var sqftsplit = sqft.split(",");
+
       let ffeStr = params.ffe;
-      var ffes = ffeStr.split(",")
+      var ffes = ffeStr.split(",");
       console.log(propName);
       console.log(clientN);
       console.log(ffes);
@@ -19,6 +23,16 @@ function parseQueryItems(){
       document.getElementById("prompt").innerHTML = prompt;
       document.getElementById("maxppl").innerHTML = `Maximum occupancy: ${numppl}`;
       
+      sqfthtml = document.getElementById("sqft").innerHTML;
+
+      for (var i=0; i<sqftsplit.length; i++){
+        sqftpart = sqftsplit[i].split("~");
+        var sqellist = `<p>${sqftpart[0]}: ${sqftpart[1]}</p>`
+        sqfthtml.insertAdjacentHTML("beforeend", sqftpart)
+      }
+
+      
+
       var polist = document.getElementById("poitems");
       var c;
       var ffeLabels = [];
