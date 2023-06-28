@@ -23,7 +23,7 @@ function parseQueryItems(){
       document.getElementById("prompt").innerHTML = prompt;
       document.getElementById("maxppl").innerHTML = `Maximum occupancy: ${numppl}`;
       
-      sqfthtml = document.getElementById("sqft").innerHTML;
+      sqfthtml = document.getElementById("sqft");
 
       for (var i=0; i<sqftsplit.length; i++){
         sqftpart = sqftsplit[i].split("~");
