@@ -28,7 +28,7 @@ function parseQueryItems(){
       for (var i=0; i<sqftsplit.length; i++){
         sqftpart = sqftsplit[i].split("~");
         var sqellist = `<p>${sqftpart[0]}: ${sqftpart[1]}</p>`
-        sqfthtml.insertAdjacentHTML("beforeend", sqftpart)
+        sqfthtml.insertAdjacentHTML("beforeend", sqellist)
       }
 
       
@@ -82,8 +82,11 @@ function parseQueryItems(){
           }]
         },
         options: {
+            legend:{
+                display: false
+            },
           title: {
-            display: true,
+            display: false,
             text: clientN
           }
         }
