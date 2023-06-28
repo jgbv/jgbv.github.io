@@ -21,13 +21,13 @@ function parseQueryItems(){
       document.getElementById("clientName").innerHTML = clientN;
       document.getElementById("POdate").innerHTML = getDate();    
       document.getElementById("prompt").innerHTML = prompt;
-      document.getElementById("maxppl").innerHTML = `Maximum occupancy: ${numppl}`;
+      document.getElementById("maxppl").innerHTML = `<b>Maximum occupancy</b>: ${numppl}`;
       
       sqfthtml = document.getElementById("sqft");
 
       for (var i=0; i<sqftsplit.length; i++){
         sqftpart = sqftsplit[i].split("~");
-        var sqellist = `<p><b>${sqftpart[0]}</b>: ${sqftpart[1]}</p>`
+        var sqellist = `<p><b>${sqftpart[0]}</b>: ${sqftpart[1]}ft<sup>2</sup></p>`
         sqfthtml.insertAdjacentHTML("beforeend", sqellist)
       }
 
