@@ -23,7 +23,7 @@ function parseQueryItems(){
         
         var rowimg = `<td class="rowimg">${c[0]}</td>`;
         var itemName = `<td class="itemName">${c[1]}</td>`;
-        chairdata.indexOf(itemName) === -1 ? chairdata.push(itemName) : console.log("already added");
+        chairdata.indexOf(itemName) === -1 ? chairdata.push(c[1]) : console.log("already added");
         var supplierName = `<td class="supplierName">${c[2]}</td>`;
         var itemQuantity = `<td class="itemQuantity">${c[3]}</td>`;
         var itemCost = `<td class="itemCost">$${c[4]}</td>`;
