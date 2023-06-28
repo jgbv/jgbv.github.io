@@ -32,9 +32,9 @@ function parseQueryItems(){
         ffeLabels.indexOf(itemName) === -1 ? ffeLabels.push(c[1]) : console.log("already added");
         var supplierName = `<td class="supplierName">${c[2]}</td>`;
         var itemQuantity = `<td class="itemQuantity">${c[3]}</td>`;
-        ffeCounts.push(parseInt(c[2]))
+        ffeCounts.push(parseInt(c[2]));
         var itemCost = `<td class="itemCost">$${c[4]}</td>`;
-        ffeCosts += parseFloat(c[4])
+        ffeCosts += parseFloat(c[4])*parseFloat(c[3]);
         var elementList = `<tr>${rowimg}${itemName}${supplierName}${itemQuantity}${itemCost}</tr>`;
         polist.insertAdjacentHTML("beforeend", elementList);
       }
