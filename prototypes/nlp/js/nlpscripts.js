@@ -27,7 +27,7 @@ function parseQueryItems(){
 
       for (var i=0; i<sqftsplit.length; i++){
         sqftpart = sqftsplit[i].split("~");
-        var sqellist = `<p>${sqftpart[0]}: ${sqftpart[1]}</p>`
+        var sqellist = `<p><b>${sqftpart[0]}</b>: ${sqftpart[1]}</p>`
         sqfthtml.insertAdjacentHTML("beforeend", sqellist)
       }
 
@@ -42,7 +42,8 @@ function parseQueryItems(){
         c = ffes[i].split("~");
         
         var rowimg = `<td class="rowimg">${c[0]}</td>`;
-        var itemName = `<td class="itemName">${c[1]}</td>`;
+        var capsname = c[1].charAt(0).toUpperCase() + c[1].slice(1);
+        var itemName = `<td class="itemName">${capsname.replace("_"," ")}</td>`;
         ffeLabels.indexOf(itemName) === -1 ? ffeLabels.push(c[1]) : console.log("already added");
         var supplierName = `<td class="supplierName">${c[2]}</td>`;
         var itemQuantity = `<td class="itemQuantity">${c[3]}</td>`;
@@ -71,6 +72,9 @@ function parseQueryItems(){
         "#e8c3b9",
         "#1e7145"
       ];
+
+      console.log(`ffeLabels: ${ffeLabels}`);
+      console.log(`ffeLabels: ${ffeCounts}`);
 
       new Chart("pieChart", {
         type: "pie",
