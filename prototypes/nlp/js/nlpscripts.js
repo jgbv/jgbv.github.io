@@ -10,6 +10,8 @@ function parseQueryItems(){
       let clientN = params.clientName;
       let sqft = params.sqft;
 
+      var baseRentperSqft = 200;
+
       var sqftsplit = sqft.split(",");
 
       let ffeStr = params.ffe;
@@ -17,7 +19,7 @@ function parseQueryItems(){
       console.log(propName);
       console.log(clientN);
       console.log(ffes);
-      document.getElementsByTagName("title")[0].innerHTML = `Purchase Order ${propName}`;
+      document.getElementsByTagName("title")[0].innerHTML = `BeyondView Buildout ${propName}`;
       document.getElementById("clientName").innerHTML = clientN;
       document.getElementById("POdate").innerHTML = getDate();    
       document.getElementById("prompt").innerHTML = prompt;
@@ -25,10 +27,14 @@ function parseQueryItems(){
       
       sqfthtml = document.getElementById("sqft");
 
+      var totalsqft = 0;
+
       for (var i=0; i<sqftsplit.length; i++){
         sqftpart = sqftsplit[i].split("~");
-        var sqellist = `<p><b>${sqftpart[0]}</b>: ${sqftpart[1]}ft<sup>2</sup></p>`
-        sqfthtml.insertAdjacentHTML("beforeend", sqellist)
+        var sqftval = parseFloat(sqftpart[1]).toFixed(2);
+        var sqellist = `<p><b>${sqftpart[0].replace("-"," ")}</b>: ${sqftval}ft<sup>2</sup></p>`;
+        sqfthtml.insertAdjacentHTML("beforeend", sqellist);
+        totalsqft+=parseFloat(sqftpart[1]);
       }
 
       
@@ -36,24 +42,43 @@ function parseQueryItems(){
       var polist = document.getElementById("poitems");
       var c;
       var ffeLabels = [];
-      var ffeCounts = [];
+      var ffeTrack = {};
+      var ffeCounts = []
       var ffeCosts = 0;
+      var countnum = 0;
       for (var i=0; i < ffes.length; i++){
         c = ffes[i].split("~");
         
         var rowimg = `<td class="rowimg">${c[0]}</td>`;
         var capsname = c[1].charAt(0).toUpperCase() + c[1].slice(1);
         var itemName = `<td class="itemName">${capsname.replace("_"," ")}</td>`;
-        ffeLabels.indexOf(itemName) === -1 ? ffeLabels.push(c[1]) : console.log("already added");
+        var category = c[1].split("_")[0];
+        
         var supplierName = `<td class="supplierName">${c[2]}</td>`;
         var itemQuantity = `<td class="itemQuantity">${c[3]}</td>`;
-        ffeCounts.push(parseInt(c[2]));
+        
+        countnum = parseInt(c[3]);
+
+        if(ffeTrack.hasOwnProperty(category)){
+            ffeTrack[category]+=1;
+        } else {
+            ffeTrack[category] = 1;
+        }
+
         var itemCost = `<td class="itemCost">$${c[4]}</td>`;
+        var calctotalItemCost = parseInt(c[3]) * parseFloat(c[4]);
+        var totalItemCost = `<td class="itemTotalCost">$${calctotalItemCost.toFixed(2)}</td>`;
         ffeCosts += parseFloat(c[4])*parseFloat(c[3]);
-        var elementList = `<tr>${rowimg}${itemName}${supplierName}${itemQuantity}${itemCost}</tr>`;
+        var elementList = `<tr>${rowimg}${itemName}${supplierName}${itemQuantity}${itemCost}${totalItemCost}</tr>`;
         polist.insertAdjacentHTML("beforeend", elementList);
       }
-      
+      console.log(ffeTrack.keys);
+      for(var i=0; i<Object.keys(ffeTrack).length; i++){
+        var fcat = Object.keys(ffeTrack)[i];
+        ffeLabels.push(fcat);
+        ffeCounts.push(ffeTrack[fcat]);
+      }
+
       document.getElementById("fsubtotal").innerHTML = `$${ffeCosts.toFixed(2)}`;
       var processingfee = 100.29;
       var shippingfee = 1683.31;
@@ -63,36 +88,70 @@ function parseQueryItems(){
       document.getElementById("ftotal").innerHTML = `$${total.toFixed(2)}`;
 
     //   var randoms = Array(ffeLabels.length).fill(0).map(makeARandomNumber);
-    //   var barColors = Array(ffeLabels.length).fill(0).map(getRandHexColor);
-
-      var barColors = [
-        "#b91d47",
-        "#00aba9",
-        "#2b5797",
-        "#e8c3b9",
-        "#1e7145"
-      ];
+      var pieColors = Array(ffeLabels.length).fill(0).map(getRandHexColor);
+    //   console.log(`barColors: ${pieColors}`);
+    //   var pieColors = [
+    //     "#b91d47",
+    //     "#00aba9",
+    //     "#2b5797",
+    //     "#e8c3b9",
+    //     "#1e7145"
+    //   ];
 
       console.log(`ffeLabels: ${ffeLabels}`);
-      console.log(`ffeLabels: ${ffeCounts}`);
+      console.log(`ffeCounts: ${ffeCounts}`);
 
       new Chart("pieChart", {
         type: "pie",
         data: {
           labels: ffeLabels,
           datasets: [{
-            backgroundColor: barColors,
+            backgroundColor: pieColors,
             data: ffeCounts
           }]
         },
         options: {
             legend:{
-                display: false
+                position: "right"
+                // display: false
             },
           title: {
             display: false,
             text: clientN
           }
+        }
+      });
+
+      var extraCalcs = 75000; 
+      var alltotal = total+extraCalcs;
+      var barColors = Array(ffeLabels.length).fill(0).map(getRandHexColor);
+      var areacalcs = parseInt(alltotal/totalsqft);
+      console.log(`${total} | ${totalsqft} | ${areacalcs}`);
+      var bardata = [areacalcs, baseRentperSqft];
+      var barlabels = ["Buildout Cost/sqft", "Base Rent/sqft"]
+      new Chart("barChart", {
+        type: "bar",
+        data: {
+          labels: barlabels,
+          datasets: [{
+            backgroundColor: barColors,
+            data: bardata
+          }]
+        },
+        options: {
+            legend:{
+                position: "right",
+                display: false
+            },
+            title: {
+                display: false,
+                text: clientN
+            },
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
         }
       });
 
@@ -104,7 +163,8 @@ var makeARandomNumber = function(){
 }
 
 var getRandHexColor = function(){
-    return Math.floor(Math.random()*16777215).toString(16);
+    var hexval = Math.floor(Math.random()*16777215).toString(16); 
+    return `#${hexval}`;
 }
 
 function getDate(){
