@@ -1,5 +1,6 @@
 //example page call nlpdata.html?propertyName=456MainStreet&clientName=DunderMifflin
 //file:///C:/bvpy/NLP_SetDress_Data/html/idpo.html?propertyName=456MainStreet&clientName=DunderMifflin&chairs=img_AluChair_HermanMiller_11_33.00,img_ConferenceTable_Ikea_2_5600.00,img_SwedishChair_Ikea_4_44.45
+
 function parseQueryItems(){
     const params = new Proxy(new URLSearchParams(window.location.search), {
         get: (searchParams, prop) => searchParams.get(prop),
@@ -69,7 +70,8 @@ function parseQueryItems(){
         var calctotalItemCost = parseInt(c[3]) * parseFloat(c[4]);
         var totalItemCost = `<td class="itemTotalCost">$${calctotalItemCost.toFixed(2)}</td>`;
         ffeCosts += parseFloat(c[4])*parseFloat(c[3]);
-        var elementList = `<tr>${rowimg}${itemName}${supplierName}${itemQuantity}${itemCost}${totalItemCost}</tr>`;
+        // var elementList = `<tr>${rowimg}${itemName}${supplierName}${itemQuantity}${itemCost}${totalItemCost}</tr>`;
+        var elementList = `<tr>${itemName}${supplierName}${itemQuantity}${itemCost}${totalItemCost}</tr>`;
         polist.insertAdjacentHTML("beforeend", elementList);
       }
       console.log(ffeTrack.keys);
@@ -155,7 +157,7 @@ function parseQueryItems(){
         }
       });
 
-
+      readText('txt/constructionitems.txt', "constructionitems");
 }
 
 var makeARandomNumber = function(){
@@ -175,3 +177,31 @@ function getDate(){
     let datestr = `${month}/${day}/${year}`;
     return datestr;
 }
+
+
+// function readText(fname, docid){
+//   const fs = require('fs');
+//   fs.readFile(fname, 'utf-8', (err, data) => {
+//     if (err) throw err;
+//     console.log(data);
+//     // document.getElementById(docid).innerHTML;
+
+//   })
+// }
+
+// function readText(input, docid) {
+//   const file = input.files[0];
+//   const reader = new FileReader();
+
+//   reader.onload = function (event) {
+//     const contents = event.target.result;
+//     console.log(`contents: ${contents}`);
+//     // document.getElementById(docid).innerHTML;
+//   };
+
+//   reader.onerror = function (event) {
+//     console.error("Error reading file:", event.target.error);
+//   };
+
+//   reader.readAsText(file, 'utf-8');
+// }
