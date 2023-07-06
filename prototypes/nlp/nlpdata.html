@@ -33,6 +33,38 @@
                 color: #3d617d;
             }
 
+            .sheetheader{
+                color: #FFF;
+                background-color: #404040;
+                padding: 8px;
+            }
+
+            body {
+                font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+            }
+
+            #headerinfo{
+                font-size:12px;
+            }
+
+            #bvtable{
+                font-size:12px;
+            }
+
+            #poitems, #layoutextraitems, #constructionitems, #softcostitems {
+                font-size: 10px;
+            }
+
+            .dividerfill {
+                background-color: #3d617d;
+                width: 100%;
+                height: 10px;
+            }
+
+            .vertdiv {
+                border-right:1px solid #CCC;
+                height: 250px;
+            }
         </style>
 
         <script type="text/javascript" src="js/nlpscripts.js"></script>
@@ -42,11 +74,11 @@
     <body onload="parseQueryItems()">
             
         <div class="container">
-            <div class="row">
+            <div class="row" id="headerinfo">
                 <div class="col" id="addresses">
                     <br>
                     <div id="client">
-                        <h3 class="clientFont"><b id="clientName">Client</b></h3>
+                        <h5 class="clientFont"><b id="clientName">Client</b></h5>
                         <p id="clientSt">200 Main Avenue</p>
                         <p id="clientCity">New Springfield, OR 11111</p>
                         <p id="clientPhone">(123) 456-7890</p>
@@ -61,8 +93,8 @@
                 </div>
                 <div class="col">
                     <br>
-                    <h2>Option Buildout</h2>
-                    <table class="table table-bordered">
+                    <h5>Option Buildout</h5>
+                    <table class="table" id="bvtable">
                         <tbody>
                             <tr>
                                 <th scope="row">Option#</th>
@@ -88,20 +120,44 @@
                     </table>
                 </div>
             </div>
-            <br><hr><br>
+            
+            <br><div class="dividerfill"></div><br>
 
+            <h4 class="clientFont">123 Main Street, San Francisco, CA 94103</h4>
+            
             <div class="row">
+                <div class="col vertdiv">
+                    <br><br>
+                    
+                    <h5><b>Market Indicators</b></h5>
+                    <p>10 Year Treasury Yield: 3.471%</p>
+                    <p>San Francisco Unemployment Rate: 3.11%</p>
+                    <p>San Francisco Real GDP Growth % change YOY: 2.17%</p>
+                </div>
                 <div class="col">
-                    <h1>Buildout Summary</h1>
-                    <h4><b>Focus:</b></h4>
+                    <img width="400" src="https://investingincre.com/wp-content/uploads/2022/09/adsada.png" alt="">
+                </div>
+            </div>
+            
+            <br><div class="dividerfill"></div><br>
+
+            <h4 class="clientFont">Buildout Summary</h4>
+            <div class="row">
+                <div class="col vertdiv">
+                    <h5><b>Focus:</b></h5>
                     <p id="prompt"></p> <br>
                     <p id="sqft"></p> <br>
                     <p id="maxppl"></p> 
                 </div>
+                <div class="col">
+                    <img width="400" src="https://wpmedia.roomsketcher.com/content/uploads/2021/12/13154519/RoomSketcher-Commercial-Real-Estate-Floor-Plan-Office-Space-3D-Isometric_800w.jpg" alt="">
+                </div>
             </div>
-            <hr>
+
+            <br><div class="dividerfill"></div><br>
+            
             <div class="row">
-                <div class="col" style="width:100%;max-width:600px">
+                <div class="col vertdiv" style="width:100%;max-width:600px">
                     <h4>FFE Distribution</h4>
                     <canvas id="pieChart" ></canvas>
                 </div>
@@ -110,15 +166,14 @@
                     <canvas id="barChart" ></canvas>
                 </div>
             </div>
-            
-            
 
             <br><hr><br>
+            <div class="row sheetheader"><h5>FFE Catalog</h5></div>
             <div class="row">
                 <table class="table table-striped" id="orderitems">
                     <thead>
                         <tr>
-                            <th scope="col">Item Preview</th>
+                            <!-- <th scope="col">Item Preview</th> -->
                             <th scope="col">Item Name</th>
                             <th scope="col">Supplier</th>
                             <th scope="col">Quantity</th>
@@ -132,6 +187,79 @@
                 </table>                
             </div>
 
+            <br><hr><br>
+            <div class="row sheetheader"><h5>Soft Costs</h5></div>
+            <div class="row">
+                <table class="table table-striped" id="softcosts">
+                    <thead>
+                        <tr>
+                            <th scope="col">Item Name</th>
+                            <th scope="col">Total Item Cost</th>
+                        </tr>
+                    </thead>
+                    <tbody id="softcostitems">
+                        <tr><td>MEP Engineering Fees -</td><td> $1,530.00 </td></tr>
+                        <tr><td>TAS/ADA</td><td>$950.00</td></tr>
+                        <tr><td>Asbestos Survey</td><td>$823.00</td></tr>
+                        <tr><td>Engineering Over Time Allowance</td><td>$254.00</td></tr>
+                    </tbody>
+                </table>                
+            </div>
+
+            <br><hr><br>
+            <div class="row sheetheader"><h5>Construction Costs</h5></div>
+            <div class="row">
+                <table class="table table-striped" id="constructioncosts">
+                    <thead>
+                        <tr>
+                            <th scope="col">Item Name</th>
+                            <th scope="col">Total Item Cost</th>
+                        </tr>
+                    </thead>
+                    <tbody id="constructionitems">
+                        <tr><td>Permits/Expediting incl</td><td>$1,450.00</td></tr>
+                        <tr><td>Gen Conditions / Gen Requirements</td><td>$9,952.95</td></tr>
+                        <tr><td>Insurance safety bonds incl</td><td>$4,295.09</td></tr>
+                        <tr><td>Temp Facilities / Infection Control</td><td>$1,950.00</td></tr>
+                        <tr><td>Clean-UP incl</td><td>$774.95</td></tr>
+                        <tr><td>Demolition</td><td>$1,850.50</td></tr>
+                        <tr><td>Concrete</td><td>$3,050.00</td></tr>
+                        <tr><td>Masonry</td><td>$3,690.00</td></tr>
+                        <tr><td>Structural & Misc Steel</td><td>$1,850.50</td></tr>
+                        <tr><td>Rough Carpentry</td><td>$4,295.09</td></tr>
+                        <tr><td>Millwork</td><td>$18,650.00</td></tr>
+                        <tr><td>Waterproofing</td><td>$16,075.00</td></tr>
+                        <tr><td>Fireproofing</td><td>$6,238.00</td></tr>
+                        <tr><td>Firestopping Allowance</td><td>$28,290.00</td></tr>
+                        <tr><td>Roofing</td><td>$2,750.00</td></tr>
+                        <tr><td>EIFS</td><td>$11,395.00</td></tr>
+                        <tr><td>Joint Sealants</td><td>$8,290.00</td></tr>
+                        <tr><td>Doors Frames & Hardware</td><td>$13,725.50</td></tr>
+                        <tr><td>Glass Glazing & Mirrors</td><td>$6,290.00</td></tr>
+                        <tr><td>Drywall / Plaster</td><td>$14,403.48</td></tr>
+                        <tr><td>Ceiling/Acoustical</td><td>$3,450.00</td></tr>
+                        <tr><td>Paint / Wallcovering</td><td>$9,735.90</td></tr>
+                        <tr><td>Carpet / Base / Flooring</td><td>$7,513.70</td></tr>
+                        <tr><td>Floor Float Allowance</td><td>$1,396.00</td></tr>
+                        <tr><td>Tile / Stone</td><td>$1,635.63</td></tr>
+                        <tr><td>Signage</td><td>$600.00</td></tr>
+                        <tr><td>Other Specialties</td><td>$1,396.00</td></tr>
+                        <tr><td>Equipment</td><td>$4,950.00</td></tr>
+                        <tr><td>Window Treatments</td><td>$44,648.00</td></tr>
+                        <tr><td>Conveying / Pneumatic Tube</td><td>$7,990.00</td></tr>
+                        <tr><td>Fire Suppression</td><td>$2,723.00</td></tr>
+                        <tr><td>Plumbing</td><td>$45,987.44</td></tr>
+                        <tr><td>HVAC</td><td>$8,880.00</td></tr>
+                        <tr><td>Electrical</td><td>$20,285.00</td></tr>
+                        <tr><td>Communications</td><td>$3,050.00</td></tr>
+                        <tr><td>Fire Alarm</td><td>$5,288.02</td></tr>
+                        <tr><td>Keys/Rekeying allowance</td><td>$500.00</td></tr>
+                        <tr><td>Signage allowance</td><td>$500.00</td></tr>
+                    </tbody>
+                </table>                
+            </div>
+
+            
         </div>
 
         <br><hr><br>
@@ -154,7 +282,18 @@
                 <div class="col text-right" id="ftotal">$10,100.00</div>
             </div>
         </div>
-        <br><br><hr><br>
+        
+        <br><hr><br>
+        <div class="container" id="legalesefooter">
+            <div class="row">
+                <div class="col text-right">
+                    <p style="color: #CCC">©2023 BeyondView Inc.</p>
+                </div>
+            </div>
+        </div>
+
+        <br><hr><br>
+        
         <div class="container" id="legalesefooter">
             <div class="row">
                 <div class="col text-right">
